@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+</head>
+<body>
+<div class = "container my-2">
+  <h1>Student Management System</h1>
+  <hr>
+  <h2>Student List</h2>
+  <a th:href = "@{showAddStudentForm}" class="btn btn-primary btn-sm btn-3">Add Student</a>
+  <table border = "1" class = "table table-striped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>mobile</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "student : ${students}">
+      <td th:text = "${student.getId}"></td>
+      <td th:text = "${student.getFirstName}"></td>
+      <td th:text = "${student.getLastName}"></td>
+      <td th:text = "${student.getEmail}"></td>
+      <td th:text = "${student.getmobile}"></td>
+      <td>
+        <a th:href = "@{/showUpdateStudentForm/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
+        <a th:href = "@{/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
